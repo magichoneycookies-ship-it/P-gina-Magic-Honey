@@ -1,3 +1,63 @@
+/* ==========================================================================
+   MAGIC HONEY - PALETA DE LUJO & TIPOGRAFÍA (MIDNIGHT GOLD)
+   ========================================================================== */
+
+/* 1. IMPORTAR FUENTES DE GOOGLE */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
+
+/* 2. CONFIGURACIÓN DE VARIABLES GLOBALES DE COLORES */
+:root {
+  --color-background: #0A0A0A !important; /* Negro Obsidiana */
+  --color-foreground: #FAF9F6 !important; /* Crema Seda */
+  --color-accent: #C5A24D !important;     /* Oro Mate */
+  
+  /* Sobreescritura de variables del tema Shopify */
+  --gradient-background: #0A0A0A !important;
+  --color-base-text: #E0E0E0 !important;
+  --color-base-background-1: #0A0A0A !important;
+  --color-base-solid-button-labels: #0A0A0A !important;
+  --color-base-outline-button-labels: #C5A24D !important;
+}
+
+/* 3. APLICAR TIPOGRAFÍAS */
+h1, h2, h3, h4, h5, h6, 
+.h1, .h2, .h3, .h4, .h5, .h6,
+.collection-title, .product__title h1 {
+  font-family: 'Playfair Display', serif !important;
+  color: #C5A24D !important; /* Encabezados siempre dorados */
+  letter-spacing: 1px;
+}
+
+body, p, span, a, li, input, textarea, select, .button {
+  font-family: 'Montserrat', sans-serif !important;
+  color: #E0E0E0 !important; /* Textos legibles en gris claro */
+}
+
+/* 4. REDISEÑO DE BOTONES ESTILO PERFUMERÍA */
+.button, 
+.shopify-payment-button__button {
+  background-color: transparent !important;
+  color: #C5A24D !important;
+  border: 1px solid #C5A24D !important;
+  border-radius: 0px !important; /* Bordes rectos minimalistas */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease !important;
+}
+
+/* Efecto al pasar el mouse por encima del botón */
+.button:hover, 
+.shopify-payment-button__button:hover {
+  background-color: #C5A24D !important;
+  color: #0A0A0A !important;
+  box-shadow: 0 0 15px rgba(197, 162, 77, 0.4);
+}
+
+/* Fondo de las tarjetas de producto y menús */
+.card, .card-wrapper, .header, .footer {
+  background-color: #121212 !important;
+  border-color: #2A2A2A !important;
+}
 * {
   box-sizing: border-box;
 }
@@ -4212,4 +4272,8 @@ product-recommendations:has([data-has-recommendations='false']) {
     opacity: var(--atc-opacity, 1);
     translate: 0px var(--atc-destination, 0px);
   }
+}
+/* Forzar refresco visual e-commerce */
+body {
+  background: #0A0A0A !important;
 }
