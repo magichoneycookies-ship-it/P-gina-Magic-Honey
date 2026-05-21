@@ -134,5 +134,165 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style type="text/css">
+  /* Forzar fuentes en encabezados y textos */
+  h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6,
+  .banner__heading, .collection-title, .product__title h1, .grid-product__title {
+    font-family: 'Playfair Display', serif !important;
+    color: #C5A24D !important;
+    letter-spacing: 1px !important;
+    font-style: normal !important; /* Quita la cursiva genérica si no la deseas */
+  }
+
+  body, p, span, a, li, input, textarea, select, .price, .product-item, .banner__text {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #E0E0E0 !important;
+  }
+
+  /* Personalización de Botones Estilo Alta Perfumería */
+  .button, .shopify-payment-button__button, .btn, .banner__buttons a {
+    background-color: transparent !important;
+    color: #C5A24D !important;
+    border: 1px solid #C5A24D !important;
+    border-radius: 0px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .button:hover, .shopify-payment-button__button:hover, .btn:hover, .banner__buttons a:hover {
+    background-color: #C5A24D !important;
+    color: #0A0A0A !important;
+    box-shadow: 0 0 15px rgba(197, 162, 77, 0.4) !important;
+  }
+
+  /* ESTILOS DE LA PANTALLA DE VERIFICACIÓN DE EDAD */
+  #AgeVerificationModal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #0A0A0A !important;
+    z-index: 9999999 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 20px !important;
+  }
+
+  body.age-verified #AgeVerificationModal {
+    display: none !important;
+  }
+
+  .age-box {
+    background-color: #121212 !important;
+    border: 1px solid #C5A24D !important;
+    padding: 50px 40px !important;
+    text-align: center !important;
+    max-width: 500px !important;
+    width: 100% !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .age-logo {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 32px !important;
+    color: #C5A24D !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important;
+  }
+
+  .age-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 24px !important;
+    color: #FAF9F6 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .age-text {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    color: #B0B0B0 !important;
+    line-height: 1.6 !important;
+    margin-bottom: 35px !important;
+  }
+
+  .age-buttons {
+    display: flex !important;
+    gap: 20px !important;
+    justify-content: center !important;
+  }
+
+  .age-btn-yes {
+    background-color: #C5A24D !important;
+    color: #0A0A0A !important;
+    padding: 12px 30px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    border: 1px solid #C5A24D !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+  }
+
+  .age-btn-no {
+    background-color: transparent !important;
+    color: #777 !important;
+    padding: 12px 30px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    cursor: pointer !important;
+    border: 1px solid #333 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+  }
+
+  .age-btn-yes:hover {
+    box-shadow: 0 0 15px rgba(197, 162, 77, 0.6) !important;
+  }
+
+  .age-btn-no:hover {
+    border-color: #cc0000 !important;
+    color: #cc0000 !important;
+  }
+</style>
+
+<div id="AgeVerificationModal">
+  <div class="age-box">
+    <div class="age-logo">Magic Honey</div>
+    <div class="age-title">¿Eres mayor de edad?</div>
+    <div class="age-text">
+      El contenido de este sitio web está restringido para menores de 18 años. Al ingresar, confirmas que cumples con la edad legal requerida en tu país.
+    </div>
+    <div class="age-buttons">
+      <button class="age-btn-yes" onclick="verifyAge()">Sí, soy mayor</button>
+      <button class="age-btn-no" onclick="exitSite()">Salir</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function checkAge() {
+    if (localStorage.getItem('ageVerified') === 'true') {
+      document.body.classList.add('age-verified');
+    }
+  }
+  
+  function verifyAge() {
+    localStorage.setItem('ageVerified', 'true');
+    document.body.classList.add('age-verified');
+  }
+  
+  function exitSite() {
+    window.location.href = "https://www.google.com";
+  }
+
+  document.addEventListener("DOMContentLoaded", checkAge);
+</script>
   </body>
 </html>
